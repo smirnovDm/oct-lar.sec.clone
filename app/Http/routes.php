@@ -27,7 +27,12 @@ Route::post('/tasks', function(Request $request) {
     return redirect('/');
 });
 
-Route::delete('/tasks/{task}', function(Task $task){
-    $task->delete();
-    return redirect('/');
+Route::get('/tasks{tasks}/edit', function(){
+   echo 'zalupa';
 });
+//Route::put('/tasks/{task}', function(){
+//    
+//    
+//})
+    
+
