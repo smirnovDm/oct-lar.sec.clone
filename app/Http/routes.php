@@ -69,9 +69,16 @@ Route::get('/news', function(){
 
 Route::get('/news/{news}', function(News $news){
    $news_item = News::find($news->id);
-   var_dump($news_item);
+   return view('news.shownews', [
+       'news_title' => $news->title,
+       'news_text' => $news->text,
+   ]);
 })->name('news_show');
 
+Route::delete('/news/{news}', function(News $news){
+    $news->delete();
+    return redirect(route('news_index'));
+})->name('news_destroy');
 
 
 //ссылка на новости на главной странице
