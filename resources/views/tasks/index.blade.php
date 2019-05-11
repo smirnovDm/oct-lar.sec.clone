@@ -1,7 +1,6 @@
 <!-- resources/views/tasks.blade.php -->
 
 @extends('layouts.app')
-
 @section('content')
 
 <!-- Bootstrap шаблон... -->
@@ -11,7 +10,7 @@
     @include('common.errors')
 
     <!-- Форма новой задачи -->
-    <form action="{{ url('tasks') }}" method="POST" class="form-horizontal">
+    <form action="{{ route('tasks_store') }}" method="POST" class="form-horizontal">
 	{{ csrf_field() }}
 
 	<!-- Имя задачи -->
@@ -61,7 +60,7 @@
 		    </td>
 
 		    <td>
-			<form action="{{url('tasks/'.$task->id)}}" method="POST">
+			<form action="{{route('tasks_destroy', $task->id)}}" method="POST">
 			    {{csrf_field()}}
 			    {{method_field('delete')}}
 
@@ -72,9 +71,9 @@
 			</form>
 		    </td>
 		    <td>
-			<form action="{{url('tasks/'.$task->id.'/edit')}}" method="GET">
+			<form action="{{route('tasks_edit', $task->id)}}" method="post">
 			    {{csrf_field()}}
-<!--			    {{method_field('put')}}-->
+			    {{method_field('get')}}
 
 			    <button type="submit" class="btn btn-default">
 				<i class="fa fa-edit"></i> Редактировать
