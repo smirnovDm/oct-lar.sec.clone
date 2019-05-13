@@ -5,13 +5,20 @@
 
 <div class="panel-body">
 
+    <form action="{{route('create_news')}}" method="POST">
+        {{csrf_field()}}
+        {{method_field('get')}}
+        <input class="btn btn-primary" type="submit" value="Add news" style="margin: 10px;">
+    </form>
+
     <table class="table table-striped task-table">
 
         <!-- Заголовок таблицы -->
         <thead>
             <tr>
-                <th>Заголовок</th>
-                <th>Действие</th>
+                <th>Title</th>
+                <th>Action</th>
+                <th>Action</th>
             </tr>
 
         </thead>
@@ -32,29 +39,32 @@
                         {{method_field('delete')}}
 
                         <button type="submit" class="btn btn-default">
-                            <i class="fa fa-trash"></i> Удалить
+                            <i class="fa fa-trash"></i> Delete
                         </button>
 
                     </form>
                 </td>
-                TODO!!!!!!!
-<!--                <td>
-                    <form action="{{route('news_edit', $task->id)}}" method="post">
+                <td>
+                    <form action="{{route('news_edit', $news_item->id, '/edit')}}" method="GET">
                         {{csrf_field()}}
-                        {{method_field('get')}}
-
-                        <button type="submit" class="btn btn-default">
-                            <i class="fa fa-edit"></i> Редактировать
+                        
+                        <button type="submit" class="btn btn-edit">
+                            <i class="fa fa-edit"></i> Edit
                         </button>
 
                     </form>
-                </td>-->
+                </td>
             </tr>
-            @endforeach
-
+            @endforeach       
     </table>
-
 </div>
-
 @endif
+<form action="{{route('create_news')}}" method="POST">
+    {{csrf_field()}}
+    {{method_field('get')}}
+    <input class="btn btn-primary" type="submit" value="Add news" style="margin-left: 10px;">
+</form>
+
+
+
 @endsection
