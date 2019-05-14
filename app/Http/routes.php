@@ -63,7 +63,7 @@ Route::group(['prefix' => 'tasks'], function() {
 //=====================================NEWS ROUTE TREE====================
 Route::group(['prefix' => 'news'], function() {
     Route::get('/', function() {
-        $news = News::all();
+        $news = DB::table('news')->orderBy('updated_at', 'desc')->get();
         return view('news.index', [
             'news' => $news,
         ]);
